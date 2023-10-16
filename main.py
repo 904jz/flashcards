@@ -11,9 +11,9 @@ def load_cards(lang):
 
     # Use panda to create dataframe
     try:
-        df = pandas.read_csv(f'data/{card_set}_words_to_learn.csv')
+        df = pandas.read_csv(f'dictionaries/{card_set}_words_to_learn.csv')
     except FileNotFoundError:
-        df = pandas.read_csv(f'data/{card_set}_words.csv')
+        df = pandas.read_csv(f'dictionaries/{card_set}_words.csv')
     
     words = df.to_dict(orient='records')
     new_card()
@@ -67,12 +67,12 @@ language.set('Select A Language')
 language_choice = OptionMenu(window,language,*languages,command=load_cards)
 language_choice.grid(row=0,column=0,columnspan=2, sticky=EW)
 
-wrong = PhotoImage(file='images/wrong.png')
-right = PhotoImage(file='images/right.png')
+wrong = PhotoImage(file='assets/wrong.png')
+right = PhotoImage(file='assets/right.png')
 flip_timer = 'nothing'
 canvas = Canvas(master=window, height=526,width=800, bg=BACKGROUND_COLOR,highlightthickness=0)
-card_front = PhotoImage(file='images/card_front.png')
-card_back = PhotoImage(file='images/card_back.png')
+card_front = PhotoImage(file='assets/card_front.png')
+card_back = PhotoImage(file='assets/card_back.png')
 card = canvas.create_image(400,265,image=card_front)
 card_title = canvas.create_text((400,150),text='',font=('Arial',40,'italic'))
 card_word = canvas.create_text((400,263),text='',font=('Arial',60,'bold'))
